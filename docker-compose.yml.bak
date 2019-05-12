@@ -1,0 +1,38 @@
+version: '3.7'
+services:
+
+  airports:
+    build:
+      context: .
+      dockerfile: dockerfile.airports
+    restart: "always"
+    command: "java -Djava.security.egd=file:/dev/./urandom -jar app.jar"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health/ready"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - target: 8080
+        published: 80
+        protocol: tcp
+        mode: host
+
+  countries:
+    build:
+      context: .
+      dockerfile: dockerfile.countries
+    restart: "always"
+    command: "java -Djava.security.egd=file:/dev/./urandom -jar app.jar"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:81/health/ready"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    ports:
+      - target: 8080
+        published: 81
+        protocol: tcp
+        mode: host

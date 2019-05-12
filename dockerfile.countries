@@ -1,0 +1,7 @@
+FROM openjdk:8-jdk-alpine
+RUN apk add curl
+WORKDIR /app
+EXPOSE 8080
+COPY countries-assembly-1.0.1.jar /app/app.jar
+CMD java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar app.jar
+#HEALTHCHECK --interval=60s --timeout=5s --retries=5 CMD curl -f http://localhost:8080/health/live || exit 1
