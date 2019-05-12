@@ -31,7 +31,7 @@ services:
     expose:
       - "8080"
 
-  loadbalancer:
+  nginx:
     build:
        context: .
        dockerfile: dockerfile.nginx
