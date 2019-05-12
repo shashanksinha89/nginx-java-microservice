@@ -5,11 +5,9 @@ This project contains two micro-services namely `airports` and `countries` which
 
 ### Prerequisites
 
-* Docker
-
 * Docker-compose
 
-### Components
+#### Components
 
 * Nginx [frontend]
 
@@ -17,7 +15,7 @@ This project contains two micro-services namely `airports` and `countries` which
 
 * countries [backend-microservice-2]
 
-### Port Access
+#### Port Access
 
 * Both microservices can be accessed via nginx only.
 
@@ -28,9 +26,9 @@ This project contains two micro-services namely `airports` and `countries` which
 * For health check validation, port `8080` is being used from inside of the container.
 
 
-### Endpoints
+#### Endpoints
 
-Once deployed below endpoints are base endpoints that works as expected.
+Once the stack is deployed below endpoints are base endpoints that works as expected.
 
 ```
 curl -I localhost:8000/airports
@@ -41,7 +39,7 @@ curl -I localhost:8000/countries
 
 As mentioned in requirement `README.md` other endpoints like `/airports/EHAM` for airport  or `/search/ISO CODE` for `countries` microservice are working as expected.
 
-#### healthcheck
+#### Healthcheck
 
 As per requirement below mentioned endpoints are not exposed. This endpoints are used and available to identify container liveness and readiness
 
