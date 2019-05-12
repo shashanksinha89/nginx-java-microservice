@@ -47,7 +47,29 @@ As per requirement below mentioned endpoints are not exposed. This endpoints are
 
 * `/health/ready`
 
+```
+healthcheck:
+  test: ["CMD", "curl", "-f", "http://localhost:8080/health/ready"]
+  interval: 60s
+  timeout: 10s
+  retries: 3
+  start_period: 20s
+```
+Above mentioned is the health check that has been added for both microservices.
+
 Since we are using `docker-compose`, `/health/ready` endpoint is being used to identify container health. Although we can utilize both endpoints if we deploy this tech stack on `kubernetes`. i.e for container readiness use `/health/ready` and for liveness check utilize `/health/live`
+
+#### Dockerfiles
+
+For each service we have different dockerfile. Below are dockerfile names for respective service.
+
+* `nginx`     - `[dockerfile.nginx]`
+
+* `airports`  - `[dockerfile.airports]`
+
+* `countries` - `[dockerfile.countries]`
+
+Refer to `docker-compose.yml` file for complete stack information.
 
 ## Steps
 
